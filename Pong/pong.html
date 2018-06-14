@@ -7,15 +7,61 @@
 			sjs.open("target", 800, 500);
 			
 			//Dot
-			var dot =new sjs.Image("Images/pixil-frame-0.png");
-			dot.type ="dot"; 
+			var dot = new sjs.Image("Images/pixil-frame-0.png");
+			dot.type = "dot"; 
 			dot.setSize(32, 32);
 			dot.center(); 
 			dot.friction = 0;
-			dot.bounce();
-			dot.pushUp(3);
-			dot.pushRight(4);
-			dot.pushRight(-1); 
+			dot.bounce(1);
+			dot.pushUp(7);
+			dot.pushRight(1);
+
+			//Paddle1
+			var paddle1 = new sjs.Image("Images/paddle.png")
+			paddle1.type ="paddle"
+			paddle1.setSize(100, 20);
+			paddle1.centerH()
+			
+
+			//Paddle2
+			var paddle2 = new sjs.Image("Images/paddle.png")
+			paddle2.type = "paddle"
+			paddle2.setSize(100, 20)
+			paddle2.center().bottom();
+			
+			//player1 score
+			var score = 0
+			var score_txt = new sjs.Text("score: 0", 21, "white");
+
+			// player 2score
+			var score2 = 0;
+			var score2_txt = new sjs.Text("score: 0", 21, "white");
+			score2_txt.bottom();
+
+			sjs.keyDown(LEFT_KEY, function(){
+				paddle2.pushLeft();
+			});
+
+			sjs.keyDown(RIGHT_KEY, function() {
+				paddle2.pushRight();
+			});
+
+			sjs.keyDown(A_KEY, function() {
+				paddle1.pushLeft();
+			});
+
+			sjs.keyDown(D_KEY, function() {
+				paddle1.pushRight();
+			});
+
+			sjs.onHit("dot","paddle", function(dot,paddle){
+				score = score + 1;
+				score_txt.setText("Score: "+ score);
+				sjs.bounceOff(dot,paddle);
+			
+			});
+
+
 
 
 		}//end start 
