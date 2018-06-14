@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title> Pong </title> 
+	<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script> 
+	<script>
+		function start() {
+			sjs.open("target", 800, 500);
+			
+			//Dot
+			var dot =new sjs.Image("Images/pixil-frame-0.png");
+			dot.type ="dot"; 
+			dot.setSize(32, 32);
+			dot.center(); 
+			dot.friction = 0;
+			dot.bounce();
+			dot.pushUp(3);
+			dot.pushRight(4);
+			dot.pushRight(-1); 
+
+
+		}//end start 
+	</script> 
+</head> 
+	<body onload="start()"> 
+		<h1> Pong game </h1> 
+		<div id="target" style="margin:auto;background:#000000;"></div> 
+	</body> 
+</html> 
